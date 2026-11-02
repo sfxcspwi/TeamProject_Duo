@@ -1,4 +1,4 @@
-@import-normalize; /* bring in normalize.css styles */
+@import-normalize; 
 
 body {
   margin: 0;
@@ -7,8 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 :root {
-  
   --color-primary: #FFB36C;
 
   --bg-main: #FFFFFF;
@@ -17,6 +17,31 @@ body {
 
   --text-primary: #000000;
   --text-inverse: #FFFFFF;
+}
+
+
+.container {
+  max-width: 1140px; 
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+
+@media (max-width: 1199px) {
+  .container 
+  {
+    max-width: 634px; 
+  }
+}
+
+@media (max-width: 767px) {
+  .container 
+  {
+    max-width: 293px; 
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 code {
