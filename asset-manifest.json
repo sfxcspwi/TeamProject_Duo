@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/TeamProject_Duo/static/css/main.10727d7a.css",
+    "main.css": "/TeamProject_Duo/static/css/main.a965248a.css",
     "main.js": "/TeamProject_Duo/static/js/main.583f53b1.js",
     "index.html": "/TeamProject_Duo/index.html",
-    "main.10727d7a.css.map": "/TeamProject_Duo/static/css/main.10727d7a.css.map",
+    "main.a965248a.css.map": "/TeamProject_Duo/static/css/main.a965248a.css.map",
     "main.583f53b1.js.map": "/TeamProject_Duo/static/js/main.583f53b1.js.map"
   },
   "entrypoints": [
-    "static/css/main.10727d7a.css",
+    "static/css/main.a965248a.css",
     "static/js/main.583f53b1.js"
   ]
 }
