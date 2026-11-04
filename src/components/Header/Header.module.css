@@ -33,6 +33,9 @@
 }
 .userData{
     margin-left: 400px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
 }
 .nav{
     font-family: Montserrat Alternates;

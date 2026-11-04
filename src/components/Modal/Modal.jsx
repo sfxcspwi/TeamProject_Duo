@@ -1,10 +1,11 @@
 import s from './Modal.module.css';
+import { createPortal } from 'react-dom';
+const modalRoot = document.getElementById("modal-root");
 export function Modal({children}){
-    return (
-        <div className={s.overlay}>
-            <div className={s.modal}>
-                {children}
-            </div>
-        </div>
+    return createPortal(
+            <div className={s.overlay}>
+            {children}
+        </div>,
+        modalRoot
     )
 }

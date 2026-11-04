@@ -1,12 +1,7 @@
-import { useState } from "react"
 import s from './Header.module.css';
-// import { ReactComponent as Avatar } from '../Images/avatar.png';
 import avatar from '../Icons/avatar.svg';
 import logo from '../Icons/logo.svg'
-export function Header({handleToggle}) {
-    const [isLogin, setIsLogin] = useState(() => JSON.parse(localStorage.getItem('isLogin')) ?? null);
-    const [userName, setUserName] = useState(() => JSON.parse(localStorage.getItem('user-data')) ?? null);
-    
+export function Header({handleToggle,userData}) {
     return (
         <header className={s.header}>
             <div className={s.container}>
@@ -16,9 +11,9 @@ export function Header({handleToggle}) {
                     <li className={s.item}><a href="#" className={s.nav}>Contacts</a></li>
                     <li className={s.item}><a href="#" className={s.nav}>Menu</a></li>
                 </ul>
-                {isLogin ? (
+                {userData ? (
                     <div className={s.userData}>
-                        <p className={s.userName}>{userName}</p>
+                        <p className={s.userName}>{userData.userName}</p>
                         <img src={avatar} alt="avatar" />
                     </div>
                 ) : (
