@@ -3,7 +3,7 @@ import s from './Header.module.css';
 // import { ReactComponent as Avatar } from '../Images/avatar.png';
 import avatar from '../Icons/avatar.svg';
 import logo from '../Icons/logo.svg'
-export function Header() {
+export function Header({handleToggle}) {
     const [isLogin, setIsLogin] = useState(() => JSON.parse(localStorage.getItem('isLogin')) ?? null);
     const [userName, setUserName] = useState(() => JSON.parse(localStorage.getItem('user-data')) ?? null);
     
@@ -23,8 +23,8 @@ export function Header() {
                     </div>
                 ) : (
                         <div className={s.userData}>
-                            <button className={s.btn}>Sign Up</button>
-                            <button className={s.btn}>Login</button>
+                            <button className={s.btn} onClick={()=> handleToggle('signUp')}>Sign Up</button>
+                            <button className={s.btn} onClick={()=> handleToggle("login")}>Login</button>
                         </div>
                     )
                 }
