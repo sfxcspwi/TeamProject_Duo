@@ -17,6 +17,10 @@
     border-radius: 25px;
     background-color: white;
 }
+.modalLogin{
+    composes: modal;
+    height: 434px;
+}
 .title{
     text-align: center;
     font-size: 28px;
@@ -53,7 +57,88 @@
     border: 0;
     font-size: 14px;
     color: #000000;
+    margin-top: 10px;
     display: block;
     margin: 0 auto;
-    margin-top: 10px;
+}
+.text{
+    font-family: Montserrat;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 10px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+}
+.link{
+    font-family: Montserrat;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 10px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-decoration: underline;
+        text-decoration-style: solid;
+        text-decoration-thickness: 0%;
+        background-color: transparent;
+        border: 0;
+}
+
+@media (min-width:768px) and (max-width:1199px) {
+
+    .modal{
+        width: 400px;
+        height: 440px;
+    }
+    .modalLogin{
+        height: 340px;
+    }
+    .title{
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .label{
+        font-size: 12px;
+    }
+    .input::placeholder{
+        font-size: 12px;
+    }
+    .btn{
+        width: 107px;
+        height: 35px;
+        font-size: 12px;
+        
+    }
+    .input{
+        width: 310px;
+        height: 40px;
+    }
+    .form{
+        margin-left: 30px;
+        width: 310px;
+    }
+}
+@media (min-width:320px) and (max-width:767px){
+    .wrapper{
+        display: block;
+    }
+    .modal{
+        width: 293px;
+        height: 454px;
+    }
+    .form{
+        width: 243px;
+        margin-left: 20px;
+    }
+    .input{
+        width: 243px;
+    }
+    .title{
+        margin-bottom: 0px;
+        padding-top: 20px;
+    }
+    .modalLogin{
+        width: 293px;
+        height: 320px;
+    }
 }

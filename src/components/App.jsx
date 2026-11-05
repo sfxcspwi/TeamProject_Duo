@@ -4,9 +4,7 @@ import { ModalText } from "./Modal/ModalText";
 import { Modal } from "./Modal/Modal";
 export const App = () => {
   const [modalValue, setModalValue] = useState(null);
-  const [userData, setUserData] = useState(
-      () => JSON.parse(localStorage.getItem('user-data')) ?? null
-    );
+  const [userData, setUserData] = useState(null)
 
   const handleToggle = (value) => {
     setModalValue(value);
@@ -52,7 +50,7 @@ export const App = () => {
       <Header handleToggle={handleToggle} userData={ userData} />
       {modalValue && (
         <Modal>
-          {modalValue === 'signUp'? <ModalText value="signUp" onSignUp={onSignUp}/>: <ModalText value="login" onLogin={onLogin}/>}
+          {modalValue === 'signUp'? <ModalText value="signUp" onSignUp={onSignUp} handleToggle={handleToggle}/>: <ModalText value="login" onLogin={onLogin}/>}
         </Modal>
       )}
     </div>
