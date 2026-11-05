@@ -1,5 +1,5 @@
 import s from './Modal.module.css';
-export function ModalText({value, onSignUp, onLogin }) {
+export function ModalText({value, onSignUp, onLogin,handleToggle }) {
     
     return (
       <>
@@ -40,13 +40,20 @@ export function ModalText({value, onSignUp, onLogin }) {
                 required
               />
               <button className={s.btn}>Sign Up</button>
+              <p className={s.text}>
+                Already have an account?{' '}
+                <span>
+                  <button onClick={()=> handleToggle("login")} className={s.link}>
+                    Log In
+                  </button>
+                </span>
+              </p>
             </form>
           </div>
         ) : (
-          <div className={s.modal}>
+          <div className={s.modalLogin}>
             <h1 className={s.title}>Login</h1>
             <form className={s.form} onSubmit={onLogin}>
-
               <label htmlFor="email" className={s.label}>
                 E-Mail
               </label>
