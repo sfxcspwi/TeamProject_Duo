@@ -14,17 +14,17 @@ export function Header({ handleToggle, userData }) {
         <img src={logo} alt="logo" className={s.logo} />
         <ul className={s.list}>
           <li className={s.item}>
-            <a href="#" className={s.nav}>
+            <a href="/" className={s.nav}>
               Who we are
             </a>
           </li>
           <li className={s.item}>
-            <a href="#" className={s.nav}>
+            <a href="/" className={s.nav}>
               Contacts
             </a>
           </li>
           <li className={s.item}>
-            <a href="#" className={s.nav} onClick={handleShow}>
+            <a href="/" className={s.nav} onClick={handleShow}>
               Menu
             </a>
           </li>
@@ -55,17 +55,17 @@ export function Header({ handleToggle, userData }) {
             <div className={s.menuWrapper}>
               <ul className={s.Menulist}>
                 <li className={s.item}>
-                  <a href="#" className={s.nav}>
+                  <a href="/" className={s.nav}>
                     Who we are
                   </a>
                 </li>
                 <li className={s.item}>
-                  <a href="#" className={s.nav}>
+                  <a href="/" className={s.nav}>
                     Contacts
                   </a>
                 </li>
                 <li className={s.item}>
-                  <a href="#" className={s.nav}>
+                  <a href="/" className={s.nav}>
                     Menu
                   </a>
                 </li>
