@@ -6,6 +6,7 @@ import { News } from "./News/News";
 import {CityForecast} from "./CityForecast/CityForecast";
 import {Hero} from "./Hero/Hero";
 import { fetchWeatherByCity } from './Services/weatherApi';
+import {Footer} from "./Footer/Footer";
 
 export const App = () => {
   const [modalValue, setModalValue] = useState(null);
@@ -88,6 +89,8 @@ export const App = () => {
         </main>
       )}
       <News/>
+
+      <Footer/>
     </div>
   );
 };
