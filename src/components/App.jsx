@@ -12,8 +12,10 @@ export const App = () => {
   const [modalValue, setModalValue] = useState(null);
   const [userData, setUserData] = useState(null)
   const [weatherData, setWeatherData] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [isLoading, setIsLoading] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [error, setError] = useState(null);
 
   const handleToggle = (value) => {
     setModalValue(value);
