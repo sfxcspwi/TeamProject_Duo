@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Header } from "./Header/Header";
 import { ModalText } from "./Modal/ModalText";
 import { Modal } from "./Modal/Modal";
+import { News } from "./News/News";
 export const App = () => {
   const [modalValue, setModalValue] = useState(null);
   const [userData, setUserData] = useState(null)
@@ -45,14 +46,18 @@ export const App = () => {
       alert('Incorrect email or password');
     }
   };
+  const onClose = () => {
+    setModalValue(null);
+  }
   return (
     <div> 
       <Header handleToggle={handleToggle} userData={ userData} />
       {modalValue && (
-        <Modal>
+        <Modal onClose={onClose}>
           {modalValue === 'signUp'? <ModalText value="signUp" onSignUp={onSignUp} handleToggle={handleToggle}/>: <ModalText value="login" onLogin={onLogin}/>}
         </Modal>
       )}
+      <News/>
     </div>
   );
 };
