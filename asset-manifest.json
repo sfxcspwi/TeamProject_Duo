@@ -1,13 +1,21 @@
 {
   "files": {
-    "main.css": "/TeamProject_Duo/static/css/main.a965248a.css",
-    "main.js": "/TeamProject_Duo/static/js/main.583f53b1.js",
+    "main.css": "/TeamProject_Duo/static/css/main.0bc805fd.css",
+    "main.js": "/TeamProject_Duo/static/js/main.24aa08aa.js",
+    "static/media/hero__bg.png": "/TeamProject_Duo/static/media/hero__bg.53837ab012e8875899be.png",
+    "static/media/whatsapp.svg": "/TeamProject_Duo/static/media/whatsapp.e23fb00f9eefaf272679772f143cbfc9.svg",
+    "static/media/instagram.svg": "/TeamProject_Duo/static/media/instagram.ddda12958429b797c0b6fa23f1ab0cd3.svg",
+    "static/media/avatar.svg": "/TeamProject_Duo/static/media/avatar.9ae21baa5699bca7190dfd46ad59ebe8.svg",
+    "static/media/facebook.svg": "/TeamProject_Duo/static/media/facebook.aad89db40d4d81b1f3051b1b910119d9.svg",
+    "static/media/search.svg": "/TeamProject_Duo/static/media/search.d6b2210006084e689485933e55ccbb7f.svg",
+    "static/media/logo.svg": "/TeamProject_Duo/static/media/logo.9a0ce4f94e3b2be6972d6e64354156c2.svg",
     "index.html": "/TeamProject_Duo/index.html",
-    "main.a965248a.css.map": "/TeamProject_Duo/static/css/main.a965248a.css.map",
-    "main.583f53b1.js.map": "/TeamProject_Duo/static/js/main.583f53b1.js.map"
+    "static/media/menu.svg": "/TeamProject_Duo/static/media/menu.857bf8c6822b3815fa2ffc418f041aa8.svg",
+    "main.0bc805fd.css.map": "/TeamProject_Duo/static/css/main.0bc805fd.css.map",
+    "main.24aa08aa.js.map": "/TeamProject_Duo/static/js/main.24aa08aa.js.map"
   },
   "entrypoints": [
-    "static/css/main.a965248a.css",
-    "static/js/main.583f53b1.js"
+    "static/css/main.0bc805fd.css",
+    "static/js/main.24aa08aa.js"
   ]
 }
