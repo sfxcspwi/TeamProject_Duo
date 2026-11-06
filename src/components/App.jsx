@@ -3,9 +3,16 @@ import { Header } from "./Header/Header";
 import { ModalText } from "./Modal/ModalText";
 import { Modal } from "./Modal/Modal";
 import { News } from "./News/News";
+import {CityForecast} from "./CityForecast/CityForecast";
+import {Hero} from "./Hero/Hero";
+import { fetchWeatherByCity } from './Services/weatherApi';
+
 export const App = () => {
   const [modalValue, setModalValue] = useState(null);
   const [userData, setUserData] = useState(null)
+  const [weatherData, setWeatherData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleToggle = (value) => {
     setModalValue(value);
@@ -49,6 +56,22 @@ export const App = () => {
   const onClose = () => {
     setModalValue(null);
   }
+
+  const handleSearch = async (cityName) => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const data = await fetchWeatherByCity(cityName);
+      setWeatherData(data); 
+    } catch (err) {
+      setError(err.message);
+      alert(`Error: ${err.message}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
   return (
     <div> 
       <Header handleToggle={handleToggle} userData={ userData} />
@@ -56,6 +79,13 @@ export const App = () => {
         <Modal onClose={onClose}>
           {modalValue === 'signUp'? <ModalText value="signUp" onSignUp={onSignUp} handleToggle={handleToggle}/>: <ModalText value="login" onLogin={onLogin}/>}
         </Modal>
+      )}
+      
+      <Hero onSearch={handleSearch} />
+      {weatherData && (
+        <main>
+          <CityForecast data={weatherData}/>
+        </main>
       )}
       <News/>
     </div>
