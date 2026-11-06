@@ -12,8 +12,8 @@ export const App = () => {
   const [modalValue, setModalValue] = useState(null);
   const [userData, setUserData] = useState(null)
   const [weatherData, setWeatherData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
 
   const handleToggle = (value) => {
     setModalValue(value);
