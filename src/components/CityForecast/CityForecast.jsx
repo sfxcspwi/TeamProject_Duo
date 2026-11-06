@@ -24,9 +24,12 @@ export function CityForecast({ data, onRemove, onRefresh }) {
   const iconUrl = `https://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`;
 
   return (
-    <div style={{ border: '1px solid black', padding: '16px', margin: '16px 0' }}>
+    <div>
       <div>
-        <strong>{city}</strong>, <span>{country}</span>
+        <ul>
+          <li><p className=''>{city}</p></li>
+          <li><p className=''>{country}</p></li>
+        </ul>
       </div>
 
       <h2>{timeStr}</h2>
@@ -49,7 +52,7 @@ export function CityForecast({ data, onRemove, onRefresh }) {
         <h3>{temp}°C</h3>
       </div>
 
-      <div style={{ display: 'flex', gap: '8px' }}>
+      <div>
         <button type="button" onClick={onRefresh}>
           Refresh 
         </button>

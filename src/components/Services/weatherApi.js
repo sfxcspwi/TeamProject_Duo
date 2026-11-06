@@ -1,30 +1,36 @@
 const API_KEY = '55d402e08f930acd12183ec55d7a16a9'; 
 
 export const fetchWeatherByCity = async (cityName) => {
-  const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(cityName)}&limit=1&appid=${API_KEY}`;
-  const geoRes = await fetch(geoUrl);
-  const geoData = await geoRes.json();
 
-  if (!geoRes.ok) {
-    throw new Error(geoData.message || 'API key error or request failed');
+  const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName)}&units=metric&appid=${API_KEY}`;
+  const currentRes = await fetch(currentUrl);
+  const currentData = await currentRes.json();
+
+  if (!currentRes.ok) {
+    throw new Error(currentData.message || 'City not found');
   }
 
-  if (!Array.isArray(geoData) || geoData.length === 0) {
-    throw new Error(`City "${cityName}" not found`);
-  }
+  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(cityName)}&units=metric&appid=${API_KEY}`;
+  const forecastRes = await fetch(forecastUrl);
+  const forecastData = await forecastRes.json();
 
-  const { lat, lon, name, country } = geoData[0];
-  const weatherUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
-  const weatherRes = await fetch(weatherUrl);
-  const weatherData = await weatherRes.json();
-
-  if (!weatherRes.ok) {
-    throw new Error(weatherData.message || 'Failed to fetch weather data');
+  if (!forecastRes.ok) {
+    throw new Error(forecastData.message || 'Failed to fetch forecast');
   }
 
   return {
-    city: name,
-    country,
-    ...weatherData,
+    city: currentData.name,
+    country: currentData.sys.country,
+    current: {
+      dt: currentData.dt,
+      temp: currentData.main.temp,
+      feels_like: currentData.main.feels_like,
+      humidity: currentData.main.humidity,
+      pressure: currentData.main.pressure,
+      wind_speed: currentData.wind.speed,
+      visibility: currentData.visibility,
+      weather: currentData.weather,
+    },
+    hourly: forecastData.list, 
   };
 };

@@ -25,19 +25,19 @@ export function Footer() {
     
                         <li className={s.socialItem}>
                             <button className={s.socialBtn} type="button">
-                            <img className={s.socialIcon} src={instagram}/>
+                            <img className={s.socialIcon} src={instagram} alt="instagram" />
                             </button>
                         </li>
     
                         <li className={s.socialItem}>
                             <button className={s.socialBtn} type="button">
-                            <img className={s.socialIcon} src={facebook}/>
+                            <img className={s.socialIcon} src={facebook} alt="facebook"/>
                             </button>
                         </li>
     
                         <li className={s.socialItem}>
                             <button className={s.socialBtn} type="button">
-                            <img className={s.socialIcon} src={whatsapp}/>
+                            <img className={s.socialIcon} src={whatsapp} alt="whatsapp"/>
                             </button>
                         </li>
     
