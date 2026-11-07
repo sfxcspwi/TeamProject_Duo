@@ -24,7 +24,7 @@ export function Header({ handleToggle, userData }) {
             </a>
           </li>
           <li className={s.item}>
-            <a href="/" className={s.nav} onClick={handleShow}>
+            <a href="/" className={s.nav}>
               Menu
             </a>
           </li>
