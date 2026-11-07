@@ -60,9 +60,9 @@
     margin-top: 10px;
     display: block;
     margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
 }
 .text{
-    font-family: Montserrat;
         font-weight: 500;
         font-style: Medium;
         font-size: 10px;
@@ -71,7 +71,6 @@
         text-align: center;
 }
 .link{
-    font-family: Montserrat;
         font-weight: 500;
         font-style: Medium;
         font-size: 10px;
@@ -107,7 +106,7 @@
         width: 107px;
         height: 35px;
         font-size: 12px;
-        
+
     }
     .input{
         width: 310px;
