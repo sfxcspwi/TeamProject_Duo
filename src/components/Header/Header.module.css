@@ -34,7 +34,7 @@
     height: 56px;
 }
 .userData{
-    margin-left: 400px;
+    margin-left: clamp(2rem, 10vw, 25rem);
     display: flex;
     align-items: center;
     gap: 25px;
@@ -47,6 +47,22 @@
         line-height: 100%;
         letter-spacing: 0%;
         color: #000000;
+}
+.nav:hover{
+    color: #FFB36C;
+}
+.nav:focus{
+    outline: 2px solid #FFB36C;}
+.btn:focus{
+    outline: 2px solid #000000;
+}
+.btn:hover{
+    opacity: 0.8;
+}
+.nav,
+.btn,
+.logo{
+    cursor: pointer;
 }
 *{
     list-style-type: none;
@@ -122,7 +138,8 @@
     .menuOverlay{
         width: 100%;
         background-color: #E6E6E6;
-
+        height: 100vh;
+        z-index: 100;
     }
     .menuWrapper{
         display: flex;

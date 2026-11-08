@@ -7,6 +7,7 @@ import {CityForecast} from "./CityForecast/CityForecast";
 import {Hero} from "./Hero/Hero";
 import { fetchWeatherByCity } from './Services/weatherApi';
 import {Footer} from "./Footer/Footer";
+import { ForecastInfo } from "./ForecastInfo/ForecastInfo";
 
 export const App = () => {
   const [modalValue, setModalValue] = useState(null);
@@ -16,7 +17,7 @@ export const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
-
+  const [seeMore, setSeeMore] = useState(false);
   const handleToggle = (value) => {
     setModalValue(value);
   }
@@ -70,24 +71,31 @@ export const App = () => {
       setError(err.message);
       alert(`Error: ${err.message}`);
     } finally {
+      console.log(weatherData);
+      
       setIsLoading(false);
     }
   };
-
+  const handleMore = () => {
+    setSeeMore(true);
+  }
 
   return (
     <div> 
       <Header handleToggle={handleToggle} userData={ userData} />
       {modalValue && (
         <Modal onClose={onClose}>
-          {modalValue === 'signUp'? <ModalText value="signUp" onSignUp={onSignUp} handleToggle={handleToggle}/>: <ModalText value="login" onLogin={onLogin}/>}
+          {modalValue === 'signUp'? <ModalText value="signUp" onSignUp={onSignUp} handleToggle={handleToggle}/>: <ModalText value="login" onLogin={onLogin} handleToggle={handleToggle}/>}
         </Modal>
       )}
       
       <Hero onSearch={handleSearch} />
       {weatherData && (
         <main>
-          <CityForecast data={weatherData}/>
+          <CityForecast data={weatherData} handleSeeMore={handleMore} />
+          {seeMore && (
+            <ForecastInfo data={weatherData.current} />
+          )}
         </main>
       )}
       <News/>
