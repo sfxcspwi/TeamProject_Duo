@@ -1,7 +1,11 @@
-.section 
-{
+.section {
   width: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/public/images/hero__bg.png");
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    image-set(
+      url("/public/images/hero__bg.jpg") 1x,
+      url("/public/images/hero__bg2x.jpg") 2x
+    );
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

@@ -1,6 +1,12 @@
 import React from 'react';
+import s from './CityForecast.module.css';
+import refresh from "../Icons/refresh.svg";
+import heartNoFill from "../Icons/heart_nofill.svg";
+import heartFill from "../Icons/heart_fill.svg";
+import deletesvg from "../Icons/delete.svg"
 
-export function CityForecast({ data, onRemove, onRefresh,handleSeeMore }) {
+
+export function CityForecast({ data, isFavorite, onFavorite, onRemove, onRefresh }) {
   if (!data) return null;
 
   const { city, country, current } = data;
@@ -23,52 +29,84 @@ export function CityForecast({ data, onRemove, onRefresh,handleSeeMore }) {
 
   const iconUrl = `https://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`;
 
+  const handleSeeMore = () => {
+   
+  };
+
   return (
-    <div>
-      <div>
-        <ul>
-          <li><p className=''>{city}</p></li>
-          <li><p className=''>{country}</p></li>
-        </ul>
-      </div>
+    <div className={s.card}>
+  
+        <div className={s.header}>
 
-      <h2>{timeStr}</h2>
+          <ul className={s.locationList}>   
+              <li className={s.locationItem}>
+                  <p className={s.cityName}>{city}</p>
+              </li>     
 
-      <div>
-        <button type="button" onClick={() => console.log('Hourly clicked')}>
-          Hourly forecast
-        </button>
-        <button type="button" onClick={() => console.log('Weekly clicked')}>
-          Weekly forecast
-        </button>
-      </div>
+              <li className={s.locationItem}>
+                  <p className={s.countryName}>{country}</p>
+              </li> 
+          </ul>
 
-      <p>
-        {dateStr} | {dayStr}
-      </p>
+        </div>  
 
-      <div>
-        <img src={iconUrl} alt={current.weather[0].description} />
-        <h3>{temp}°C</h3>
-      </div>
+        <h2 className={s.time}>{timeStr}</h2>   
 
-      <div>
-        <button type="button" onClick={onRefresh}>
-          Refresh 
-        </button>
+        <div className={s.tabGroup}> 
 
-        <button type="button" onClick={() => console.log('Favorite clicked')}>
-          Favorite 
-        </button>
+            <button className={s.tabBtn} type="button" onClick={() => console.log('Hourly clicked')}>
+              Hourly forecast
+            </button> 
 
-        <button type="button" onClick={handleSeeMore}>
-          See more
-        </button>
+            <button className={s.tabBtn} type="button" onClick={() => console.log('Weekly clicked')}>
+              Weekly forecast
+            </button> 
 
-        <button type="button" onClick={onRemove}>
-          Delete 
-        </button>
-      </div>
+        </div>  
+
+        <p className={s.dateRow}>   
+            <span>{dateStr}</span>    
+            <span className={s.dateDivider}>|</span>  
+            <span>{dayStr}</span> 
+        </p>
+
+        <div className={s.weatherVisual}>
+            <img className={s.weatherIcon} src={iconUrl} alt={current.weather[0].description} />
+            <h3 className={s.temperature}>{temp}°C</h3>
+        </div>
+
+        <div className={s.cardFooter}>
+            <button 
+              className={`${s.actionBtn} ${s.refreshBtn}`} 
+              type="button" 
+              onClick={onRefresh} 
+              aria-label="Refresh"
+            >
+              <img className={s.iconsBtn} src={refresh} alt="refresh" />
+            </button>   
+
+            <button 
+              className={`${s.actionBtn} ${s.favoriteBtn} ${isFavorite ? s.favoriteActive : ''}`} 
+              type="button" 
+              onClick={onFavorite} 
+              aria-label="Favorite"
+            >
+                <img src={isFavorite ? heartFill : heartNoFill} alt="favorite icon" />
+            </button>  
+                 
+            <button className={s.seeMoreBtn} type="button" onClick={handleSeeMore}>
+              See more
+            </button>   
+
+            <button 
+              className={`${s.actionBtn} ${s.deleteBtn}`} 
+              type="button" 
+              onClick={onRemove} 
+              aria-label="Delete"
+            >
+                <img className={s.iconsBtn} src={deletesvg} alt="delete" />
+            </button>
+        </div>
     </div>
   );
 }
