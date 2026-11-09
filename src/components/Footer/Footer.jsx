@@ -15,7 +15,11 @@ export function Footer() {
 
                 <li className={s.navItem}>
                     <h3 className={s.title}>Address</h3>
-                    <p className={s.text}>Svobody str. 35 <br/> Kyiv <br /> Ukraine</p>
+                    <ul className={s.navText}>
+                        <li><p className={s.text}>Svobody str. 35</p></li>
+                        <li><p className={s.text}>Kyiv</p></li>
+                        <li><p className={s.text}>Ukraine</p></li>
+                    </ul>
                 </li>
     
                 <li className={s.navItem}>
@@ -24,21 +28,39 @@ export function Footer() {
                     <ul className={s.socialList}>
     
                         <li className={s.socialItem}>
-                            <button className={s.socialBtn} type="button">
-                            <img className={s.socialIcon} src={instagram} alt="instagram" />
-                            </button>
+                            <a 
+                                className={s.socialLink} 
+                                href="https://www.instagram.com" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                aria-label="Instagram"
+                            >
+                                <img className={s.socialIcon} src={instagram} alt="instagram" />
+                            </a>
                         </li>
-    
+
                         <li className={s.socialItem}>
-                            <button className={s.socialBtn} type="button">
-                            <img className={s.socialIcon} src={facebook} alt="facebook"/>
-                            </button>
+                            <a 
+                                className={s.socialLink} 
+                                href="https://www.facebook.com" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                aria-label="Facebook"
+                            >
+                                <img className={s.socialIcon} src={facebook} alt="facebook" />
+                            </a>
                         </li>
-    
+
                         <li className={s.socialItem}>
-                            <button className={s.socialBtn} type="button">
-                            <img className={s.socialIcon} src={whatsapp} alt="whatsapp"/>
-                            </button>
+                            <a 
+                                className={s.socialLink} 
+                                href="https://www.whatsapp.com" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                aria-label="WhatsApp"
+                            >
+                                <img className={s.socialIcon} src={whatsapp} alt="whatsapp" />
+                            </a>
                         </li>
     
                     </ul>
