@@ -17,6 +17,7 @@ body {
 
   --text-primary: #000000;
   --text-inverse: #FFFFFF;
+  --cubic: cubic-bezier(0.4,0,0.2,1)
 }
 
 

@@ -5,6 +5,7 @@ export const fetchWeatherByCity = async (cityName) => {
   const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName)}&units=metric&appid=${API_KEY}`;
   const currentRes = await fetch(currentUrl);
   const currentData = await currentRes.json();
+  
 
   if (!currentRes.ok) {
     throw new Error(currentData.message || 'City not found');
