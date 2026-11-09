@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/TeamProject_Duo/static/css/main.1c92c6d2.css",
-    "main.js": "/TeamProject_Duo/static/js/main.40a39bac.js",
+    "main.css": "/TeamProject_Duo/static/css/main.f3b3f163.css",
+    "main.js": "/TeamProject_Duo/static/js/main.42935b80.js",
     "static/media/hero__bg2x.jpg": "/TeamProject_Duo/static/media/hero__bg2x.1c7ef93244df7e3a56bb.jpg",
     "static/media/pressure.svg": "/TeamProject_Duo/static/media/pressure.f689ea8a0aa3fa37d1014b0406e6ab0d.svg",
     "static/media/whatsapp.svg": "/TeamProject_Duo/static/media/whatsapp.e23fb00f9eefaf272679772f143cbfc9.svg",
@@ -21,11 +21,11 @@
     "static/media/delete.svg": "/TeamProject_Duo/static/media/delete.b1bb0d8f1b387f94a442c00dfb909db2.svg",
     "index.html": "/TeamProject_Duo/index.html",
     "static/media/menu.svg": "/TeamProject_Duo/static/media/menu.857bf8c6822b3815fa2ffc418f041aa8.svg",
-    "main.1c92c6d2.css.map": "/TeamProject_Duo/static/css/main.1c92c6d2.css.map",
-    "main.40a39bac.js.map": "/TeamProject_Duo/static/js/main.40a39bac.js.map"
+    "main.f3b3f163.css.map": "/TeamProject_Duo/static/css/main.f3b3f163.css.map",
+    "main.42935b80.js.map": "/TeamProject_Duo/static/js/main.42935b80.js.map"
   },
   "entrypoints": [
-    "static/css/main.1c92c6d2.css",
-    "static/js/main.40a39bac.js"
+    "static/css/main.f3b3f163.css",
+    "static/js/main.42935b80.js"
   ]
 }
