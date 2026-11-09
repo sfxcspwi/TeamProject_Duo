@@ -72,7 +72,8 @@ export const App = () => {
       setIsLoading(true);
       setError(null);
       const data = await fetchWeatherByCity(cityName);
-
+    console.log(data);
+    
       setCards((prevCards) => {
         const existsIndex = prevCards.findIndex(
           (card) => card.city.toLowerCase() === data.city.toLowerCase()
@@ -166,7 +167,6 @@ export const App = () => {
       setSelectedCardData(cardData);
     }
   };
-
   return (
     <div> 
       <Header handleToggle={handleToggle} userData={ userData} />

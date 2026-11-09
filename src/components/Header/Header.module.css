@@ -28,6 +28,7 @@
         line-height: 100%;
         letter-spacing: 0%;
         margin: 8px;
+        transition: scale 250ms ease-in-out;
 }
 .logo{
     width: 82px;
@@ -47,6 +48,7 @@
         line-height: 100%;
         letter-spacing: 0%;
         color: #000000;
+        transition: color 250ms var(--cubic);
 }
 .nav:hover{
     color: #FFB36C;
@@ -58,6 +60,7 @@
 }
 .btn:hover{
     opacity: 0.8;
+    scale: 1.2;
 }
 .nav,
 .btn,
@@ -69,6 +72,9 @@
     text-decoration: none;
 }
 .wrapper {
+    display: none;
+}
+.menuOverlay{
     display: none;
 }
 @media (min-width:321px) and (max-width:768px){
@@ -140,6 +146,7 @@
         background-color: #E6E6E6;
         height: 100vh;
         z-index: 100;
+        display: block;
     }
     .menuWrapper{
         display: flex;

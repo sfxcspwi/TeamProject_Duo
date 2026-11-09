@@ -52,7 +52,7 @@
 .btn{
     width: 114px;
     height: 37px;
-    background-color: #FFB36C;
+    background-color: var(--color-primary);
     border-radius: 10px;
     border: 0;
     font-size: 14px;
@@ -81,6 +81,7 @@
         text-decoration-thickness: 0%;
         background-color: transparent;
         border: 0;
+        cursor: pointer;
 }
 
 @media (min-width:768px) and (max-width:1199px) {
