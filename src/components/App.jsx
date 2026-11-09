@@ -8,6 +8,7 @@ import {Hero} from "./Hero/Hero";
 import { fetchWeatherByCity } from './Services/weatherApi';
 import {Footer} from "./Footer/Footer";
 import { ForecastInfo } from "./ForecastInfo/ForecastInfo";
+import { Gallery } from './Gallery/Gallery';
 
 export const App = () => {
   const [modalValue, setModalValue] = useState(null);
@@ -201,8 +202,9 @@ export const App = () => {
         )}
       </main>
       
+      
       <News/>
-
+      <Gallery />
       <Footer/>
     </div>
   );
