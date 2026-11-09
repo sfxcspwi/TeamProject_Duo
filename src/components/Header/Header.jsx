@@ -11,7 +11,10 @@ export function Header({ handleToggle, userData }) {
   return (
     <header className={s.header}>
       <div className={s.container}>
-        <img src={logo} alt="logo" className={s.logo} />
+        <a href="/">
+          <img src={logo} alt="logo" className={s.logo} />
+        </a>
+
         <ul className={s.list}>
           <li className={s.item}>
             <a href="/" className={s.nav}>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function CityForecast({ data, onRemove, onRefresh }) {
+export function CityForecast({ data, onRemove, onRefresh,handleSeeMore }) {
   if (!data) return null;
 
   const { city, country, current } = data;
@@ -61,7 +61,7 @@ export function CityForecast({ data, onRemove, onRefresh }) {
           Favorite 
         </button>
 
-        <button type="button" onClick={() => console.log('See more clicked')}>
+        <button type="button" onClick={handleSeeMore}>
           See more
         </button>
 

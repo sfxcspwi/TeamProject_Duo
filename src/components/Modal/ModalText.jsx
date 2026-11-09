@@ -43,7 +43,10 @@ export function ModalText({value, onSignUp, onLogin,handleToggle }) {
               <p className={s.text}>
                 Already have an account?{' '}
                 <span>
-                  <button onClick={()=> handleToggle("login")} className={s.link}>
+                  <button
+                    onClick={() => handleToggle('login')}
+                    className={s.link}
+                  >
                     Log In
                   </button>
                 </span>
@@ -76,6 +79,17 @@ export function ModalText({value, onSignUp, onLogin,handleToggle }) {
                 required
               />
               <button className={s.btn}>Login</button>
+              <p className={s.text}>
+                Don't have an account?{' '}
+                <span>
+                  <button
+                    onClick={() => handleToggle('signUp')}
+                    className={s.link}
+                  >
+                    Sign Up
+                  </button>
+                </span>
+              </p>
             </form>
           </div>
         )}
