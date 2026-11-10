@@ -20,7 +20,7 @@
     height: 35px;
     border-radius: 10px;
     border: 0px;
-    background-color: #FFB36C;
+    background-color: var(--color-primary);
     font-family: "Montserrat",sans-serif;
         font-weight: 500;
         font-style: Medium;
@@ -47,16 +47,16 @@
         font-size: 12px;
         line-height: 100%;
         letter-spacing: 0%;
-        color: #000000;
+        color: var(--text-primary);
         transition: color 250ms var(--cubic);
 }
 .nav:hover{
-    color: #FFB36C;
+    color: var(--color-primary);
 }
 .nav:focus{
-    outline: 2px solid #FFB36C;}
+    outline: 2px solid var(--color-primary);}
 .btn:focus{
-    outline: 2px solid #000000;
+    outline: 2px solid var(--text-primary);
 }
 .btn:hover{
     opacity: 0.8;
@@ -143,7 +143,7 @@
     }
     .menuOverlay{
         width: 100%;
-        background-color: #E6E6E6;
+        background-color: var(--bg-menu);
         height: 100vh;
         z-index: 100;
         display: block;

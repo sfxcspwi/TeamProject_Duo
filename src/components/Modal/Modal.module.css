@@ -15,7 +15,7 @@
     width: 600px;
     height: 534px;
     border-radius: 25px;
-    background-color: white;
+    background-color: var(--text-inverse);
 }
 .modalLogin{
     composes: modal;
@@ -40,14 +40,14 @@
 .input{
     width: 440px;
     height: 50px;
-    background-color: #e4e4e4;
+    background-color: var(--bg-input);
     padding-left: 15px;
     border-radius: 10px;
     border: 0;
 }
 .input::placeholder{
     font-size: 14px;
-    color: #ABABAB;
+    color: var(--text-placeholder);
 }
 .btn{
     width: 114px;
@@ -56,11 +56,12 @@
     border-radius: 10px;
     border: 0;
     font-size: 14px;
-    color: #000000;
+    color: var(--text-primary);
     margin-top: 10px;
     display: block;
     margin: 0 auto;
     font-family: "Montserrat", sans-serif;
+    cursor: pointer;
 }
 .text{
         font-weight: 500;
