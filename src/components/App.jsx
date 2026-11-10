@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Header } from "./Header/Header";
 import { ModalText } from "./Modal/ModalText";
 import { Modal } from "./Modal/Modal";
-import { News } from "./News/News";
+import News  from "./News/News";
 import {CityForecast} from "./CityForecast/CityForecast";
 import {Hero} from "./Hero/Hero";
 import { fetchWeatherByCity } from './Services/weatherApi';

@@ -14,9 +14,13 @@ body {
   --bg-main: #FFFFFF;
   --bg-surface: #D9D9D9; 
   --bg-input: #D9D9D9; 
+  --bg-menu: #e6e6e6;
+  --bg-forecast: #e8e8e8;
 
   --text-primary: #000000;
   --text-inverse: #FFFFFF;
+  --text-placeholder:#ababab;
+
   --cubic: cubic-bezier(0.4,0,0.2,1)
 }
 
