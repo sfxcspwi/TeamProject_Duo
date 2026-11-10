@@ -10,7 +10,8 @@ import {Footer} from "./Footer/Footer";
 import { ForecastInfo } from "./ForecastInfo/ForecastInfo";
 import { Gallery } from './Gallery/Gallery';
 import { HourlyForecast } from "./HourlyForecast/HourlyForecast";
-
+import { fetchForecastByCity } from "./Services/forecastApi";
+import { WeeklyForecast } from "./WeeklyForecast/WeeklyForecast";
 export const App = () => {
   const [modalValue, setModalValue] = useState(null);
 
@@ -22,7 +23,8 @@ export const App = () => {
   const handleToggle = (value) => {
     setModalValue(value);
   }
-
+  const [cityName, setCityName] = useState("");
+  const [weeklyData, setWeeklyData] = useState(null);
   const [selectedHourlyData, setSelectedHourlyData] = useState(null);
   const [selectedCardData, setSelectedCardData] = useState(null);
   const [cards, setCards] = useState(() => {
@@ -77,10 +79,12 @@ export const App = () => {
   const handleSearch = async (cityName) => {
   try {
       setIsLoading(true);
-      setError(null);
+    setError(null);
+    setWeeklyData(null);
+    setSelectedHourlyData(null);
+    setSelectedCardData(null);
       const data = await fetchWeatherByCity(cityName);
-    console.log(data);
-    
+      setCityName(cityName);
       setCards((prevCards) => {
         const existsIndex = prevCards.findIndex(
           (card) => card.city.toLowerCase() === data.city.toLowerCase()
@@ -139,6 +143,8 @@ export const App = () => {
 
       return updatedCards;
     });
+    setWeeklyData(null);
+    setSelectedHourlyData(null);
   };
 
   const handleRefreshCard = async (cardId, cityName) => {
@@ -174,6 +180,16 @@ export const App = () => {
       setSelectedCardData(cardData);
     }
   };
+  const onWeeklyClick =async (city) => {
+    try {
+      setWeeklyData(null);
+      const data = await fetchForecastByCity(city);
+      setWeeklyData(data);
+    } catch (error) {
+      console.log(error);
+    }
+    
+  }
   return (
     <div> 
       <Header handleToggle={handleToggle} userData={ userData} />
@@ -199,6 +215,7 @@ export const App = () => {
               onRefresh={() => handleRefreshCard(card.id, card.city)}
               handleSeeMore={() => handleSeeMore(card.data)}
               onHourlyClick={() => handleHourlyToggle(card.data.hourly)}
+              onWeeklyClick={()=> onWeeklyClick(card.city)}
             />
           ))}
         </div>
@@ -208,7 +225,11 @@ export const App = () => {
             <HourlyForecast hourly={selectedHourlyData} />
           </div>
         )}
-
+        {weeklyData &&(
+          <div>
+            <WeeklyForecast data={weeklyData.forecast}/>
+          </div>
+        )}
         {selectedCardData && (
           <div style={{ marginTop: "40px" }}>
             <ForecastInfo data={selectedCardData.current} />
