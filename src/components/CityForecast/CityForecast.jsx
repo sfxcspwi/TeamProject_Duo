@@ -6,7 +6,7 @@ import heartFill from "../Icons/heart_fill.svg";
 import deletesvg from "../Icons/delete.svg";
 
 // 1. ДОДАЙ onHourlyClick В ПРОПИ:
-export function CityForecast({ data, isFavorite, onFavorite, onRemove, onRefresh, handleSeeMore, onHourlyClick }) {
+export function CityForecast({ data, isFavorite, onFavorite, onRemove, onRefresh, handleSeeMore, onHourlyClick,onWeeklyClick}) {
   if (!data) return null;
 
   const { city, country, current } = data;
@@ -50,7 +50,7 @@ export function CityForecast({ data, isFavorite, onFavorite, onRemove, onRefresh
           Hourly forecast
         </button> 
 
-        <button className={s.tabBtn} type="button" onClick={() => console.log('Weekly clicked')}>
+        <button className={s.tabBtn} type="button" onClick={onWeeklyClick}>
           Weekly forecast
         </button> 
       </div>  
