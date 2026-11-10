@@ -11,7 +11,6 @@ import { fetchNews } from 'components/Services/newsApi';
         const filteredNews = data.filter(
           item => !item.image_url?.startsWith('https://menafn.com')
         );
-        console.log(filteredNews);
         
         setNews(filteredNews);
       } catch (error) {
