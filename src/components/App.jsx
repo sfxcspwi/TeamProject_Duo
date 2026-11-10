@@ -23,7 +23,6 @@ export const App = () => {
   const handleToggle = (value) => {
     setModalValue(value);
   }
-  const [cityName, setCityName] = useState("");
   const [weeklyData, setWeeklyData] = useState(null);
   const [selectedHourlyData, setSelectedHourlyData] = useState(null);
   const [selectedCardData, setSelectedCardData] = useState(null);
@@ -84,7 +83,6 @@ export const App = () => {
     setSelectedHourlyData(null);
     setSelectedCardData(null);
       const data = await fetchWeatherByCity(cityName);
-      setCityName(cityName);
       setCards((prevCards) => {
         const existsIndex = prevCards.findIndex(
           (card) => card.city.toLowerCase() === data.city.toLowerCase()
