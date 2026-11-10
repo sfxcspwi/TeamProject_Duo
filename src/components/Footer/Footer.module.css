@@ -1,6 +1,6 @@
 .footer
 {
-    background-color: #FFB36C;
+    background-color: var(--color-primary);
 }
 
 .container 
@@ -46,7 +46,7 @@
     leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
-    color: black;
+    color: var(--text-primary);
 }
 
 .text

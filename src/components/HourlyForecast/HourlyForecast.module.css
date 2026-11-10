@@ -1,0 +1,29 @@
+.card 
+{
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.title 
+{
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.chartScrollWrapper 
+{
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chartInner {
+  width: 100%;
+  min-width: 850px;
+  height: 240px;
+}
