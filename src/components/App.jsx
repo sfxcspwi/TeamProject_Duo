@@ -9,9 +9,11 @@ import { fetchWeatherByCity } from './Services/weatherApi';
 import {Footer} from "./Footer/Footer";
 import { ForecastInfo } from "./ForecastInfo/ForecastInfo";
 import { Gallery } from './Gallery/Gallery';
+import { HourlyForecast } from "./HourlyForecast/HourlyForecast";
 
 export const App = () => {
   const [modalValue, setModalValue] = useState(null);
+
   const [userData, setUserData] = useState(null)
   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
@@ -21,11 +23,16 @@ export const App = () => {
     setModalValue(value);
   }
 
+  const [selectedHourlyData, setSelectedHourlyData] = useState(null);
   const [selectedCardData, setSelectedCardData] = useState(null);
   const [cards, setCards] = useState(() => {
     const savedCards = localStorage.getItem("favorite-weather-cards");
     return savedCards ? JSON.parse(savedCards) : [];
   });
+
+  const handleHourlyToggle = (hourlyData) => {
+    setSelectedHourlyData((prev) => (prev === hourlyData ? null : hourlyData));
+  };
 
   const onSignUp = e => {
     e.preventDefault();
@@ -181,7 +188,7 @@ export const App = () => {
       {isLoading && <p style={{ textAlign: "center", padding: "20px" }}>Завантаження погоди...</p>}
 
       <main>
-        <div class = 'cardsList container'>
+        <div className="cardsList container">
           {cards.map((card) => (
             <CityForecast
               key={card.id}
@@ -191,9 +198,16 @@ export const App = () => {
               onRemove={() => handleDeleteCard(card.id)}
               onRefresh={() => handleRefreshCard(card.id, card.city)}
               handleSeeMore={() => handleSeeMore(card.data)}
+              onHourlyClick={() => handleHourlyToggle(card.data.hourly)}
             />
           ))}
         </div>
+
+        {selectedHourlyData && (
+          <div className="container" style={{ marginTop: "30px" }}>
+            <HourlyForecast hourly={selectedHourlyData} />
+          </div>
+        )}
 
         {selectedCardData && (
           <div style={{ marginTop: "40px" }}>

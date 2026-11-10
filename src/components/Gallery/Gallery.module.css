@@ -19,6 +19,7 @@
     line-height: 100%;
     letter-spacing: 0%;
     padding-bottom: 40px;
+    color: var(--text-primary);
 }
 
 .swiperContainer {

@@ -2,7 +2,7 @@
 {
     width: 320px;
     height: 430px;
-    background-color: #E8E8E8;
+    background-color: var(--card-bg);
     border-radius: 20px;
 }
 
@@ -65,7 +65,7 @@
 
 .tabBtn
 {
-    background-color: #FFB36C;
+    background-color: var(--color-primary);
     border: none;
     border-radius: 10px;
     font-family: "Montserrat";
@@ -130,7 +130,7 @@
 
 .seeMoreBtn
 {
-    background-color: #FFB36C;
+    background-color: var(--color-primary);
     border: none;
     border-radius: 10px;
     font-family: "Montserrat";
