@@ -7,7 +7,7 @@ import whatsapp from "../Icons/whatsapp.svg";
 export function Footer() {
 
   return (
-    <footer className={s.footer}>
+    <footer className={s.footer} id='footer'>
         <div className={`${s.container} ${s.content}`}>
             <img className={s.logo} src={logo} alt="logo" />
 
