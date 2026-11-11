@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules';
+import { EffectCoverflow, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import 'swiper/css/navigation';
 import s from './Gallery.module.css';
 
 let UNSPLASH_ACCESS_KEY = 'RoxuKy0CcZOxvG9bEDCV5haSXH6hPzi2ICXlHRM8DmY';
@@ -20,31 +19,26 @@ export function Gallery() {
         setError(null);
 
         let response = await fetch(
-          `https://api.unsplash.com/search/photos?query=weather+sky&orientation=landscape&per_page=8&client_id=${UNSPLASH_ACCESS_KEY}`
+          `https://api.unsplash.com/search/photos?query=nature+landscape&orientation=landscape&per_page=10&client_id=${UNSPLASH_ACCESS_KEY}`
         );
 
         if (!response.ok) {
-          if (response.status === 401) {
-            throw new Error('401 Unauthorized — ключ недійсний');
-          }
           throw new Error(`Статус API: ${response.status}`);
         }
 
         let data = await response.json();
-
         if (!data.results || data.results.length === 0) {
-          throw new Error('API не повернув жодної картинки');
+          throw new Error('API не повернув зображень');
         }
 
         let formattedImages = data.results.map((item) => ({
           id: item.id,
-          alt: item.alt_description || 'Weather photo',
+          alt: item.alt_description || 'Nature photo',
           url: item.urls.regular,
         }));
 
         setImages(formattedImages);
       } catch (err) {
-        console.error('Помилка Unsplash:', err.message);
         setError(err.message);
       } finally {
         setIsLoading(false);
@@ -54,19 +48,8 @@ export function Gallery() {
     fetchImages();
   }, []);
 
-  if (isLoading) {
-    return <p className={s.loadingText}>Завантаження з Unsplash API...</p>;
-  }
-
-  if (error) {
-    return (
-      <div className={s.container} style={{ textAlign: 'center', padding: '40px 0' }}>
-        <p className={s.loadingText}>
-            Помилка Unsplash API: {error}
-        </p>
-      </div>
-    );
-  }
+  if (isLoading) return <p className={s.loadingText}>Завантаження галереї...</p>;
+  if (error) return <p className={s.loadingText}>Помилка Unsplash API: {error}</p>;
 
   return (
     <section className={s.section}>
@@ -75,13 +58,12 @@ export function Gallery() {
 
         <Swiper
           key={images.length}
-          modules={[EffectCoverflow, Navigation, Autoplay]}
+          modules={[EffectCoverflow, Autoplay]}
           effect={'coverflow'}
-          grabCursor={true}
           centeredSlides={true}
           slidesPerView={'auto'}
           initialSlide={2}
-          loop={images.length > 3}
+          loop={images.length >= 5}
           autoplay={{
             delay: 3500,
             disableOnInteraction: false,
@@ -89,9 +71,10 @@ export function Gallery() {
           }}
           coverflowEffect={{
             rotate: 0,
-            stretch: -15,
-            depth: 140,
-            modifier: 1.2,
+            stretch: 60,  
+            depth: 160,     
+            modifier: 1,
+            scale: 0.88,
             slideShadows: false,
           }}
           className={s.swiperContainer}

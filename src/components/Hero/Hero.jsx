@@ -1,46 +1,7 @@
-import s from './Hero.module.css';
 import React, { useState, useEffect } from 'react';
+import s from './Hero.module.css';
 import search from "../Icons/search.svg";
-
-let getOrdinalSuffix = (day) => {
-  if (day > 3 && day < 21) return 'th';
-  switch (day % 10) {
-    case 1:  return 'st';
-    case 2:  return 'nd';
-    case 3:  return 'rd';
-    default: return 'th';
-  }
-};
-
-let getKyivDateTime = () => {
-  let now = new Date();
-
-  let monthYear = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'Europe/Kyiv',
-    month: 'long',
-    year: 'numeric',
-  }).format(now);
-
-  let dayOfWeek = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'Europe/Kyiv',
-    weekday: 'long',
-  }).format(now);
-
-  let dayNum = parseInt(
-    new Intl.DateTimeFormat('en-US', {
-      timeZone: 'Europe/Kyiv',
-      day: 'numeric',
-    }).format(now),
-    10
-  );
-
-  return {
-    monthYear,
-    dayOfWeek,
-    dayNum,
-    suffix: getOrdinalSuffix(dayNum),
-  };
-};
+import { getKyivDateTime } from '../../utils/date';
 
 export function Hero({ onSearch }) {
   const [dateData, setDateData] = useState(getKyivDateTime);
@@ -48,8 +9,8 @@ export function Hero({ onSearch }) {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setDateData(getKyivDateTime());
-    }, 1000);
+    setDateData(getKyivDateTime());
+    }, 60000);
 
     return () => clearInterval(intervalId); 
   }, []);

@@ -21,7 +21,6 @@
 
 .title 
 {
-  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 40px;
   line-height: 1.2;
@@ -70,7 +69,6 @@
 .dateMonth,
 .dateDay 
 {
-  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 24px;
   line-height: 1.2;
@@ -96,9 +94,7 @@
     border: none;
     font-family: "Montserrat";
     font-weight: 500;
-    font-style: Medium;
     font-size: 14px;
-    leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
     background-color: var(--bg-input);
@@ -110,9 +106,7 @@
     color: #878787;
     font-family: "Montserrat";
     font-weight: 500;
-    font-style: Medium;
     font-size: 14px;
-    leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
 }
@@ -131,6 +125,11 @@
     align-items: center;
     justify-content: center;
     color: var(--text-inverse);
+}
+
+.searchButton:focus
+{
+    outline: 2px solid var(--text-primary);
 }
 
 .searchIcon 
@@ -284,6 +283,7 @@
     {
         height: 15px;
         padding: 4px 10px 4px 10px;
+        font-size: 8px;
     }
 
     .title 
@@ -319,4 +319,6 @@
        min-width: 9px;
        min-height: 9px;
     }
+
+
 }
