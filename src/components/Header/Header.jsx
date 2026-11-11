@@ -3,31 +3,36 @@ import avatar from '../Icons/avatar.svg';
 import logo from '../Icons/logo.svg';
 import menu from '../Icons/menu.svg';
 import { useState } from 'react';
+import { HeaderMobile } from './HeaderMobile';
 export function Header({ handleToggle, userData }) {
   const [isShown, setIsShown] = useState(false);
   const handleShow = () => {
     setIsShown(prev => !prev);
   };
+  const handleClose = () => {
+    setIsShown(false);
+    
+  }
   return (
     <header className={s.header}>
       <div className={s.container}>
-        <a href="/">
+        <a href="/TeamProject_Duo">
           <img src={logo} alt="logo" className={s.logo} />
         </a>
 
         <ul className={s.list}>
           <li className={s.item}>
-            <a href="/" className={s.nav}>
+            <a href="/TeamProject_Duo" className={s.nav}>
               Who we are
             </a>
           </li>
           <li className={s.item}>
-            <a href="/" className={s.nav}>
+            <a href="#footer" className={s.nav}>
               Contacts
             </a>
           </li>
           <li className={s.item}>
-            <a href="/" className={s.nav}>
+            <a href="/TeamProject_Duo" className={s.nav}>
               Menu
             </a>
           </li>
@@ -43,7 +48,7 @@ export function Header({ handleToggle, userData }) {
               Sign Up
             </button>
             <button className={s.btn} onClick={() => handleToggle('login')}>
-              Login
+              Sign In
             </button>
           </div>
         )}
@@ -53,50 +58,7 @@ export function Header({ handleToggle, userData }) {
         </div>
       </div>
       {isShown && (
-        <div className={s.menuOverlay}>
-          <div className={s.containerMenu}>
-            <div className={s.menuWrapper}>
-              <ul className={s.Menulist}>
-                <li className={s.item}>
-                  <a href="/" className={s.nav}>
-                    Who we are
-                  </a>
-                </li>
-                <li className={s.item}>
-                  <a href="/" className={s.nav}>
-                    Contacts
-                  </a>
-                </li>
-                <li className={s.item}>
-                  <a href="/" className={s.nav}>
-                    Menu
-                  </a>
-                </li>
-              </ul>
-              {userData ? (
-                <div className={s.userDataMenu}>
-                  <p className={s.userName}>{userData.userName}</p>
-                  <img src={avatar} alt="avatar" />
-                </div>
-              ) : (
-                <div className={s.userDataMenu}>
-                  <button
-                    className={s.btn}
-                    onClick={() => handleToggle('signUp')}
-                  >
-                    Sign Up
-                  </button>
-                  <button
-                    className={s.btn}
-                    onClick={() => handleToggle('login')}
-                  >
-                    Login
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+        <HeaderMobile handleClose={handleClose} userData={userData} handleToggle={handleToggle} avatar={avatar}/>
       )}
     </header>
   );

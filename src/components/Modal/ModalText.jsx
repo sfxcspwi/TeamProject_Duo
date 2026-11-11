@@ -4,7 +4,7 @@ export function ModalText({value, onSignUp, onLogin,handleToggle }) {
     return (
       <>
         {value === 'signUp' ? (
-          <div className={s.modal}>
+          <div className={s.modal} onClick={(e)=> e.stopPropagation()}>
             <h1 className={s.title}>Sign Up</h1>
             <form className={s.form} onSubmit={onSignUp}>
               <label htmlFor="username" className={s.label}>
@@ -47,15 +47,15 @@ export function ModalText({value, onSignUp, onLogin,handleToggle }) {
                     onClick={() => handleToggle('login')}
                     className={s.link}
                   >
-                    Log In
+                    Sign In
                   </button>
                 </span>
               </p>
             </form>
           </div>
         ) : (
-          <div className={s.modalLogin}>
-            <h1 className={s.title}>Login</h1>
+          <div className={s.modalLogin} onClick={(e)=> e.stopPropagation()}>
+            <h1 className={s.title}>Sign In</h1>
             <form className={s.form} onSubmit={onLogin}>
               <label htmlFor="email" className={s.label}>
                 E-Mail

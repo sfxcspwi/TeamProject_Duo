@@ -6,7 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 
 :root {
   --color-primary: #FFB36C;
@@ -22,7 +24,10 @@ body {
   --text-placeholder: #ababab;
   --card-bg: #E8E8E8;
 
-  --cubic: cubic-bezier(0.4,0,0.2,1)
+  --cubic: cubic-bezier(0.4,0,0.2,1);
+
+
+  --overlay-bg: rgba(0, 0, 0, 0.5);
 }
 
 

@@ -1,5 +1,6 @@
 import { useEffect, useState,memo } from 'react';
 import s from './News.module.css';
+import rabbit from '../Images/newsImg.png';
 import { fetchNews } from 'components/Services/newsApi';
  function News(){
     const [news, setNews] = useState([]);
@@ -13,6 +14,8 @@ import { fetchNews } from 'components/Services/newsApi';
         );
         
         setNews(filteredNews);
+        console.log(news);
+        
       } catch (error) {
         console.error('Failed to fetch news:', error);
       }
@@ -30,15 +33,28 @@ import { fetchNews } from 'components/Services/newsApi';
           <ul className={s.list}>
             {news.slice(0, loaded).map(item => (
               <li className={s.item} key={item.article_id}>
-                <img src={item.image_url} alt="cat" className={s.img} />
-                <a className={s.content} href={item.link} target='_blank' rel='noopener noreferrer'>
+                <a
+                  className={s.content}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={item.image_url || rabbit}
+                    alt="cat"
+                    className={s.img}
+                  />
                   <h2 className={s.content}>{item.title}</h2>
                 </a>
               </li>
             ))}
           </ul>
-          {loaded < news.length && (
+          {loaded < news.length ? (
             <button onClick={loadMore} className={s.btn}>
+              See more
+            </button>
+          ) : (
+            <button className={s.btnDisabled}>
               See more
             </button>
           )}
