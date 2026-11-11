@@ -14,7 +14,6 @@ import { fetchNews } from 'components/Services/newsApi';
         );
         
         setNews(filteredNews);
-        console.log(news);
         
       } catch (error) {
         console.error('Failed to fetch news:', error);
