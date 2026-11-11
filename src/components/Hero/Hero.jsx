@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import s from './Hero.module.css';
 import search from "../Icons/search.svg";
-import { getKyivDateTime } from '../../utils/date';
+import { getKyivDateTime } from 'Utils/date';
 
 export function Hero({ onSearch }) {
   const [dateData, setDateData] = useState(getKyivDateTime);

@@ -1,11 +1,14 @@
-
-export const getOrdinalSuffix = (day) => {
+export const getOrdinalSuffix = day => {
   if (day > 3 && day < 21) return 'th';
   switch (day % 10) {
-    case 1:  return 'st';
-    case 2:  return 'nd';
-    case 3:  return 'rd';
-    default: return 'th';
+    case 1:
+      return 'st';
+    case 2:
+      return 'nd';
+    case 3:
+      return 'rd';
+    default:
+      return 'th';
   }
 };
 
@@ -39,7 +42,7 @@ export const getKyivDateTime = () => {
   };
 };
 
-export const formatCityForecastDate = (timestamp) => {
+export const formatCityForecastDate = timestamp => {
   if (!timestamp) return { timeStr: '', dateStr: '', dayStr: '' };
 
   const dateObj = new Date(timestamp * 1000);
@@ -55,9 +58,16 @@ export const formatCityForecastDate = (timestamp) => {
     year: 'numeric',
   });
 
-  const dayStr = dateObj.toLocaleDateString('en-US', { 
-    weekday: 'long' 
+  const dayStr = dateObj.toLocaleDateString('en-US', {
+    weekday: 'long',
   });
 
   return { timeStr, dateStr, dayStr };
+};
+export const formatForecastDate = date => {
+  return new Date(`${date}T12:00:00`).toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+  });
 };

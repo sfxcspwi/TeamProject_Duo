@@ -157,6 +157,8 @@ export const App = () => {
       toast.info("Місто було успішно видалено");
       return updatedCards;
     });
+    setSelectedHourlyData(null);
+    setWeeklyData(null);
   };
 
   const handleRefreshCard = async (cardId, cityName) => {
