@@ -4,28 +4,15 @@ import refresh from "../Icons/refresh.svg";
 import heartNoFill from "../Icons/heart_nofill.svg";
 import heartFill from "../Icons/heart_fill.svg";
 import deletesvg from "../Icons/delete.svg";
+import { formatCityForecastDate } from '../../utils/date';
 
-// 1. ДОДАЙ onHourlyClick В ПРОПИ:
-export function CityForecast({ data, isFavorite, onFavorite, onRemove, onRefresh, handleSeeMore, onHourlyClick,onWeeklyClick}) {
+export function CityForecast({ data, isFavorite, onFavorite, onRemove, onRefresh, handleSeeMore, onHourlyClick, onWeeklyClick }) {
   if (!data) return null;
 
   const { city, country, current } = data;
   const temp = Math.round(current.temp);
 
-  const dateObj = new Date(current.dt * 1000);
-
-  const timeStr = dateObj.toLocaleTimeString('en-GB', {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-
-  const dateStr = dateObj.toLocaleDateString('uk-UA', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
-
-  const dayStr = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
+  const { timeStr, dateStr, dayStr } = formatCityForecastDate(current.dt);
 
   const iconUrl = `https://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`;
 
@@ -45,7 +32,6 @@ export function CityForecast({ data, isFavorite, onFavorite, onRemove, onRefresh
       <h2 className={s.time}>{timeStr}</h2>   
 
       <div className={s.tabGroup}> 
-        {/* 2. ПОВІСЬ onHourlyClick НА КНОПКУ: */}
         <button className={s.tabBtn} type="button" onClick={onHourlyClick}>
           Hourly forecast
         </button> 

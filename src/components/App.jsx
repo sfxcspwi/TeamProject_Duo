@@ -2,37 +2,54 @@ import { useState } from "react";
 import { Header } from "./Header/Header";
 import { ModalText } from "./Modal/ModalText";
 import { Modal } from "./Modal/Modal";
-import News  from "./News/News";
-import {CityForecast} from "./CityForecast/CityForecast";
-import {Hero} from "./Hero/Hero";
+import News from "./News/News";
+import { CityForecast } from "./CityForecast/CityForecast";
+import { Hero } from "./Hero/Hero";
 import { fetchWeatherByCity } from './Services/weatherApi';
-import {Footer} from "./Footer/Footer";
+import { Footer } from "./Footer/Footer";
 import { ForecastInfo } from "./ForecastInfo/ForecastInfo";
 import { Gallery } from './Gallery/Gallery';
 import { HourlyForecast } from "./HourlyForecast/HourlyForecast";
 import { fetchForecastByCity } from "./Services/forecastApi";
 import { WeeklyForecast } from "./WeeklyForecast/WeeklyForecast";
+import { ToastContainer, toast } from 'react-toastify';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import { Spinner } from './Spinner/Spinner';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const App = () => {
   const [modalValue, setModalValue] = useState(null);
-
-  const [userData, setUserData] = useState(null)
-  // eslint-disable-next-line no-unused-vars
+  const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [error, setError] = useState(null);
-  const handleToggle = (value) => {
-    setModalValue(value);
-  }
+  
+  const [, setError] = useState(null);
+
   const [weeklyData, setWeeklyData] = useState(null);
   const [selectedHourlyData, setSelectedHourlyData] = useState(null);
   const [selectedCardData, setSelectedCardData] = useState(null);
-  const [cards, setCards] = useState(() => {
-    const savedCards = localStorage.getItem("favorite-weather-cards");
-    return savedCards ? JSON.parse(savedCards) : [];
-  });
+
+  const [cards, setCards] = useLocalStorage("favorite-weather-cards", []);
+
+  const handleToggle = (value) => {
+    setModalValue(value);
+  };
 
   const handleHourlyToggle = (hourlyData) => {
     setSelectedHourlyData((prev) => (prev === hourlyData ? null : hourlyData));
+  };
+
+  const onWeeklyClick = async (city) => {
+    try {
+      if (weeklyData && weeklyData.city === city) {
+        setWeeklyData(null);
+        return;
+      }
+      setWeeklyData(null);
+      const data = await fetchForecastByCity(city);
+      setWeeklyData({ ...data, city });
+    } catch (err) {
+      toast.error(`Не вдалося завантажити тижневий прогноз: ${err.message}`);
+    }
   };
 
   const onSignUp = e => {
@@ -41,47 +58,41 @@ export const App = () => {
     const userName = form.elements.username.value;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
-    const userData = {
-      userName,
-      email,
-      password,
-    }
+    const userData = { userName, email, password };
+
     localStorage.setItem('user-data', JSON.stringify(userData));
     form.reset();
     setModalValue(null);
-    setUserData(userData)
-  }
+    setUserData(userData);
+    toast.success("Ви успішно зареєструвалися!");
+  };
+
   const onLogin = e => {
     e.preventDefault();
-
     const form = e.currentTarget;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
-
     const savedUser = JSON.parse(localStorage.getItem('user-data'));
 
-    if (
-      savedUser &&
-      savedUser.email === email &&
-      savedUser.password === password
-    ) {
+    if (savedUser && savedUser.email === email && savedUser.password === password) {
       setUserData(savedUser);
       setModalValue(null);
+      toast.success("Вхід виконано!");
     } else {
-      alert('Incorrect email or password');
+      toast.error("Невірний email або пароль");
     }
   };
-  const onClose = () => {
-    setModalValue(null);
-  }
+
+  const onClose = () => setModalValue(null);
 
   const handleSearch = async (cityName) => {
-  try {
+    try {
       setIsLoading(true);
-    setError(null);
-    setWeeklyData(null);
-    setSelectedHourlyData(null);
-    setSelectedCardData(null);
+      setError(null);
+      setWeeklyData(null);
+      setSelectedHourlyData(null);
+      setSelectedCardData(null);
+
       const data = await fetchWeatherByCity(cityName);
       setCards((prevCards) => {
         const existsIndex = prevCards.findIndex(
@@ -102,72 +113,65 @@ export const App = () => {
         };
         return [newCard, ...prevCards];
       });
+      toast.success(`Погоду для ${cityName} завантажено`);
     } catch (err) {
       setError(err.message);
-      alert(`Error: ${err.message}`);
+      toast.error(`Місто не знайдено: ${err.message}`);
     } finally {
       setIsLoading(false);
     }
   };
 
-
   const handleToggleFavorite = (cardId) => {
     setCards((prevCards) => {
+      let isAdded = false;
+
       const updatedCards = prevCards.map((card) => {
         if (card.id === cardId) {
-          return { ...card, isFavorite: !card.isFavorite };
+          const nextState = !card.isFavorite;
+          isAdded = nextState;
+          return { ...card, isFavorite: nextState };
         }
         return card;
       });
 
-      const favoritesToSave = updatedCards.filter((card) => card.isFavorite);
-      localStorage.setItem("favorite-weather-cards", JSON.stringify(favoritesToSave));
+      if (isAdded) {
+        toast.success("Місто успішно додано до улюблених");
+      } else {
+        toast.info("Місто видалено з улюблених");
+      }
 
       return updatedCards;
     });
   };
-
 
   const handleDeleteCard = (cardId) => {
     setCards((prevCards) => {
       const targetCard = prevCards.find((c) => c.id === cardId);
       const updatedCards = prevCards.filter((card) => card.id !== cardId);
-      const favoritesToSave = updatedCards.filter((card) => card.isFavorite);
-      localStorage.setItem("favorite-weather-cards", JSON.stringify(favoritesToSave));
 
       if (selectedCardData && targetCard && selectedCardData.city === targetCard.city) {
         setSelectedCardData(null);
       }
 
+      toast.info("Місто було успішно видалено");
       return updatedCards;
     });
-    setWeeklyData(null);
-    setSelectedHourlyData(null);
   };
 
   const handleRefreshCard = async (cardId, cityName) => {
     try {
       const freshData = await fetchWeatherByCity(cityName);
-
-      setCards((prevCards) => {
-        const updatedCards = prevCards.map((card) => {
-          if (card.id === cardId) {
-            return { ...card, data: freshData };
-          }
-          return card;
-        });
-
-        const favoritesToSave = updatedCards.filter((card) => card.isFavorite);
-        localStorage.setItem("favorite-weather-cards", JSON.stringify(favoritesToSave));
-
-        return updatedCards;
-      });
+      setCards((prevCards) =>
+        prevCards.map((card) => (card.id === cardId ? { ...card, data: freshData } : card))
+      );
 
       if (selectedCardData && selectedCardData.city.toLowerCase() === cityName.toLowerCase()) {
         setSelectedCardData(freshData);
       }
+      toast.success(`Погоду для ${cityName} оновлено`);
     } catch (err) {
-      alert(`Не вдалося оновити: ${err.message}`);
+      toast.error(`Не вдалося оновити: ${err.message}`);
     }
   };
 
@@ -178,28 +182,23 @@ export const App = () => {
       setSelectedCardData(cardData);
     }
   };
-  const onWeeklyClick =async (city) => {
-    try {
-      setWeeklyData(null);
-      const data = await fetchForecastByCity(city);
-      setWeeklyData(data);
-    } catch (error) {
-      console.log(error);
-    }
-    
-  }
+
   return (
     <div> 
-      <Header handleToggle={handleToggle} userData={ userData} />
+      <Header handleToggle={handleToggle} userData={userData} />
       {modalValue && (
         <Modal onClose={onClose}>
-          {modalValue === 'signUp'? <ModalText value="signUp" onSignUp={onSignUp} handleToggle={handleToggle}/>: <ModalText value="login" onLogin={onLogin} handleToggle={handleToggle}/>}
+          {modalValue === 'signUp' ? (
+            <ModalText value="signUp" onSignUp={onSignUp} handleToggle={handleToggle} />
+          ) : (
+            <ModalText value="login" onLogin={onLogin} handleToggle={handleToggle} />
+          )}
         </Modal>
       )}
       
       <Hero onSearch={handleSearch} />
 
-      {isLoading && <p style={{ textAlign: "center", padding: "20px" }}>Завантаження погоди...</p>}
+      {isLoading && <Spinner size={50} color="#FFB36C" />}
 
       <main>
         <div className="cardsList container">
@@ -213,21 +212,19 @@ export const App = () => {
               onRefresh={() => handleRefreshCard(card.id, card.city)}
               handleSeeMore={() => handleSeeMore(card.data)}
               onHourlyClick={() => handleHourlyToggle(card.data.hourly)}
-              onWeeklyClick={()=> onWeeklyClick(card.city)}
+              onWeeklyClick={() => onWeeklyClick(card.city)}
             />
           ))}
         </div>
 
         {selectedHourlyData && (
-          <div className="container" style={{ marginTop: "30px" }}>
-            <HourlyForecast hourly={selectedHourlyData} />
-          </div>
+          <HourlyForecast hourly={selectedHourlyData} />
         )}
-        {weeklyData &&(
-          <div>
-            <WeeklyForecast data={weeklyData.forecast}/>
-          </div>
+        
+        {weeklyData && (
+          <WeeklyForecast data={weeklyData.forecast} />
         )}
+        
         {selectedCardData && (
           <div style={{ marginTop: "40px" }}>
             <ForecastInfo data={selectedCardData.current} />
@@ -235,10 +232,10 @@ export const App = () => {
         )}
       </main>
       
-      
-      <News/>
+      <News />
       <Gallery />
-      <Footer/>
+      <Footer />
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
     </div>
   );
 };

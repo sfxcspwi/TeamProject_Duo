@@ -22,33 +22,27 @@
 
 .cityName
 {
-    font-family: "Montserrat";
+    
     font-weight: 500;
-    font-style: Medium;
     font-size: 14px;
-    leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
 }
 
 .countryName
 {
-    font-family: "Montserrat";
+    
     font-weight: 500;
-    font-style: Medium;
     font-size: 14px;
-    leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
 }
 
 .time
 {
-    font-family: "Montserrat";
+    
     font-weight: 500;
-    font-style: Medium;
     font-size: 24px;
-    leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
     text-align: center;
@@ -68,15 +62,39 @@
     background-color: var(--color-primary);
     border: none;
     border-radius: 10px;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-style: Medium;
     font-size: 10px;
-    leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
     text-align: right;
     padding: 8px 18px;
+    transition: scale 250ms ease-in-out;
+}
+
+.tabBtn:focus{
+    outline: 2px solid var(--text-primary);
+}
+
+.seeMoreBtn:focus
+{
+    outline: 2px solid var(--text-primary);
+}
+
+.seeMoreBtn:hover{
+    opacity: 0.8;
+    scale: 1.2;
+}
+
+.tabBtn:hover{
+    opacity: 0.8;
+    scale: 1.2;
+}
+
+.actionBtn:hover
+{
+    opacity: 0.8;
+    scale: 1.2;
 }
 
 .dateRow
@@ -85,11 +103,8 @@
     justify-content: center;
     align-items: center;
     gap: 13px;
-    font-family: "Montserrat";
     font-weight: 500;
-    font-style: Medium;
     font-size: 14px;
-    leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
     margin-bottom: 22px;
@@ -113,11 +128,9 @@
 
 .temperature
 {
-    font-family: "Montserrat";
+    
     font-weight: 500;
-    font-style: Medium;
     font-size: 32px;
-    leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
 }
@@ -126,6 +139,7 @@
 {
     background-color: transparent;
     border: none;
+    transition: scale 250ms ease-in-out;
 }
 
 .seeMoreBtn
@@ -133,15 +147,14 @@
     background-color: var(--color-primary);
     border: none;
     border-radius: 10px;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-style: Medium;
     font-size: 10px;
-    leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
     text-align: right;
     padding: 8px 25px;
+    transition: scale 250ms ease-in-out;
 }
 
 .cardFooter
@@ -227,6 +240,18 @@
     {
         width: 24px;
         height: 24px;
+    }
+
+    .seeMoreBtn:hover
+    {
+        opacity: 0.8;
+        scale: 1.1;
+    }
+
+    .tabBtn:hover
+    {
+        opacity: 0.8;
+        scale: 1.1;
     }
 
 }
