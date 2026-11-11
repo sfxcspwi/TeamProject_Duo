@@ -1,11 +1,14 @@
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--overlay-bg);
-    z-index: 2;
+        position: fixed;
+            inset: 0;
+            background-color: var(--overlay-bg);
+            z-index: 2;
+        
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+            animation: fadeIn 0.3s ease forwards;
 }
 
 .modal {
@@ -17,6 +20,7 @@
     height: 534px;
     border-radius: 25px;
     background-color: var(--text-inverse);
+    animation: modalShow 0.3s ease forwards;
 }
 
 .modalLogin{
@@ -84,7 +88,13 @@
         border: 0;
         cursor: pointer;
 }
+.overlayClosing {
+    animation: fadeOut 0.3s ease forwards;
+}
 
+.overlayClosing .modal {
+    animation: modalHide 0.3s ease forwards;
+}
 @media (min-width:768px) and (max-width:1199px) {
 
     .modal{
@@ -141,5 +151,47 @@
     .modalLogin{
         width: 293px;
         height: 360px;
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalShow {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes modalHide {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-50%, -48%) scale(0.95);
     }
 }

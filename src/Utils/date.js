@@ -71,3 +71,4 @@ export const formatForecastDate = date => {
     day: 'numeric',
   });
 };
+
