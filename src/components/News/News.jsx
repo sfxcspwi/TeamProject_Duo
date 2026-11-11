@@ -2,6 +2,7 @@ import { useEffect, useState,memo } from 'react';
 import s from './News.module.css';
 import rabbit from '../Images/newsImg.png';
 import { fetchNews } from 'components/Services/newsApi';
+import { NewsList } from './NewsList';
  function News(){
     const [news, setNews] = useState([]);
     const [loaded, setLoaded] = useState(4);
@@ -12,7 +13,6 @@ import { fetchNews } from 'components/Services/newsApi';
         const filteredNews = data.filter(
           item => !item.image_url?.startsWith('https://menafn.com')
         );
-        
         setNews(filteredNews);
         
       } catch (error) {
@@ -29,25 +29,7 @@ import { fetchNews } from 'components/Services/newsApi';
       <section className={s.news}>
         <div className="container">
           <p className={s.title}>Interacting with our pets</p>
-          <ul className={s.list}>
-            {news.slice(0, loaded).map(item => (
-              <li className={s.item} key={item.article_id}>
-                <a
-                  className={s.content}
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src={item.image_url || rabbit}
-                    alt="cat"
-                    className={s.img}
-                  />
-                  <h2 className={s.content}>{item.title}</h2>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <NewsList news={news} rabbit={rabbit} loaded={loaded}/>
           {loaded < news.length ? (
             <button onClick={loadMore} className={s.btn}>
               See more

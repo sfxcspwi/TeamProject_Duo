@@ -2,8 +2,10 @@ import s from './Header.module.css';
 import avatar from '../Icons/avatar.svg';
 import logo from '../Icons/logo.svg';
 import menu from '../Icons/menu.svg';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { HeaderMobile } from './HeaderMobile';
+import { UserMenu } from './UserMenu';
+import { AuthNav } from './AuthNav';
 export function Header({ handleToggle, userData }) {
   const [isShown, setIsShown] = useState(false);
   const handleShow = () => {
@@ -38,19 +40,9 @@ export function Header({ handleToggle, userData }) {
           </li>
         </ul>
         {userData ? (
-          <div className={s.userData}>
-            <p className={s.userName}>{userData.userName}</p>
-            <img src={avatar} alt="avatar" />
-          </div>
+         <UserMenu avatar={avatar} userData={userData}/>
         ) : (
-          <div className={s.userData}>
-            <button className={s.btn} onClick={() => handleToggle('signUp')}>
-              Sign Up
-            </button>
-            <button className={s.btn} onClick={() => handleToggle('login')}>
-              Sign In
-            </button>
-          </div>
+          <AuthNav handleToggle={handleToggle}/>
         )}
         <div className={s.wrapper} onClick={handleShow}>
           <p className={s.menu}>Menu</p>
