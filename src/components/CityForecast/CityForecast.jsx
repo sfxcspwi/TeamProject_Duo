@@ -4,7 +4,7 @@ import refresh from "../Icons/refresh.svg";
 import heartNoFill from "../Icons/heart_nofill.svg";
 import heartFill from "../Icons/heart_fill.svg";
 import deletesvg from "../Icons/delete.svg";
-import { formatCityForecastDate } from 'Utils/date';
+import { formatCityForecastDate } from 'utils/date';
 
 export function CityForecast({ data, isFavorite, onFavorite, onRemove, onRefresh, handleSeeMore, onHourlyClick, onWeeklyClick }) {
   if (!data) return null;

@@ -41,16 +41,16 @@ html{
 .cardsList {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 90px;
+  gap: 74px;
   margin: 0 auto;
-  padding: 40px 0px;
+  padding: 40px 16px;
   box-sizing: border-box;
 }
 
 @media (max-width: 1199px) {
   .cardsList {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 110px; 
+    gap: 78px; 
   }
 
   .container 
@@ -64,6 +64,7 @@ html{
   .cardsList {
     grid-template-columns: 1fr;
     gap: 24px;
+    padding: 35px 0px;
   }
 
   .container 

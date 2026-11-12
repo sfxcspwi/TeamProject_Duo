@@ -1,40 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { interpolateToHourly } from 'utils/date';
 import s from './HourlyForecast.module.css';
 
-const interpolateToHourly = (hourlyList = []) => {
-  if (!hourlyList || hourlyList.length < 2) return [];
-
-  const result = [];
-  
-  for (let i = 0; i < hourlyList.length - 1 && result.length < 24; i++) {
-    const currentPoint = hourlyList[i];
-    const nextPoint = hourlyList[i + 1];
-
-    const startTime = currentPoint.dt * 1000;
-    const startTemp = currentPoint.main.temp;
-    const tempDiff = (nextPoint.main.temp - startTemp) / 3;
-
-    for (let step = 0; step < 3; step++) {
-      if (result.length >= 24) break;
-
-      const date = new Date(startTime + step * 3600 * 1000);
-      const hours = date.getHours();
-      const ampm = hours >= 12 ? 'pm' : 'am';
-      const formattedHour = `${hours % 12 || 12} ${ampm}`;
-
-      result.push({
-        time: formattedHour,
-        temp: Math.round(startTemp + tempDiff * step),
-      });
-    }
-  }
-
-  return result;
-};
-
 export function HourlyForecast({ hourly = [] }) {
-  const chartData = interpolateToHourly(hourly);
+  const chartData = useMemo(() => interpolateToHourly(hourly), [hourly]);
 
   if (chartData.length === 0) {
     return <p style={{ padding: '20px', textAlign: 'center', color: '#888' }}>Немає даних для прогнозу</p>;

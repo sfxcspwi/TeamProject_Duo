@@ -72,3 +72,33 @@ export const formatForecastDate = date => {
   });
 };
 
+export const interpolateToHourly = (hourlyList = []) => {
+  if (!hourlyList || hourlyList.length < 2) return [];
+
+  const result = [];
+
+  for (let i = 0; i < hourlyList.length - 1 && result.length < 24; i++) {
+    const currentPoint = hourlyList[i];
+    const nextPoint = hourlyList[i + 1];
+
+    const startTime = currentPoint.dt * 1000;
+    const startTemp = currentPoint.main.temp;
+    const tempDiff = (nextPoint.main.temp - startTemp) / 3;
+
+    for (let step = 0; step < 3; step++) {
+      if (result.length >= 24) break;
+
+      const date = new Date(startTime + step * 3600 * 1000);
+      const hours = date.getHours();
+      const ampm = hours >= 12 ? 'pm' : 'am';
+      const formattedHour = `${hours % 12 || 12} ${ampm}`;
+
+      result.push({
+        time: formattedHour,
+        temp: Math.round(startTemp + tempDiff * step),
+      });
+    }
+  }
+
+  return result;
+};
