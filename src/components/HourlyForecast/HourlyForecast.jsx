@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
-import { interpolateToHourly } from 'utils/date';
+import { interpolateToHourly } from '../../utils/date';
 import s from './HourlyForecast.module.css';
 
 export function HourlyForecast({ hourly = [] }) {

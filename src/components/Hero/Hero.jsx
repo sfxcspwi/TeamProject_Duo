@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import s from './Hero.module.css';
-import { getKyivDateTime } from 'utils/date';
+import { getKyivDateTime } from '../../utils/date';
 import { SearchForm } from './SearchForm';
 
 export function Hero({ onSearch }) {
