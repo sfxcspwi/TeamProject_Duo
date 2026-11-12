@@ -57,6 +57,7 @@ export function Gallery() {
         <h2 className={s.title}>Beautiful nature</h2>
 
         <Swiper
+          grabCursor={true}
           key={images.length}
           modules={[EffectCoverflow, Autoplay]}
           effect={'coverflow'}

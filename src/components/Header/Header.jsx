@@ -2,7 +2,7 @@ import s from './Header.module.css';
 import avatar from '../Icons/avatar.svg';
 import logo from '../Icons/logo.svg';
 import menu from '../Icons/menu.svg';
-import { use, useState } from 'react';
+import { useState } from 'react';
 import { HeaderMobile } from './HeaderMobile';
 import { UserMenu } from './UserMenu';
 import { AuthNav } from './AuthNav';
