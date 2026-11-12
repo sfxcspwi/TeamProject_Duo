@@ -10,10 +10,14 @@ import { NewsList } from './NewsList';
     const getNews = async () => {
       try {
         const data = await fetchNews();
-        const filteredNews = data.filter(
-          item => !item.image_url?.startsWith('https://menafn.com')
-        );
-        setNews(filteredNews);
+        // const filteredNews = data.filter(
+        //   item => !item.image_url?.startsWith('https://menafn.com')
+        // );
+        // setNews(filteredNews);
+        console.log(data);
+        
+        setNews([data.related_searches]);
+
         
       } catch (error) {
         console.error('Failed to fetch news:', error);
