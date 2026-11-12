@@ -34,9 +34,6 @@
     align-items: center;
 }
 @media(max-width:1199px){
-    .list{
-        width: 634px;
-    }
     .text{
         font-size: 14px;
     }
@@ -51,9 +48,8 @@
 @media (max-width:767px){
     .list{
         position: relative;
-        width: 293px;
         flex-wrap: wrap;
-        padding: 55px 25px;
+        padding: 55px 10px;
         flex-direction: row;
         gap: 40px;
     }

@@ -21,7 +21,8 @@ export function Hero({ onSearch }) {
 
         <div className={s.content}>
           <p className={s.description}>
-            Create your personal list of favorite cities and always be aware of the weather.
+            Create your personal list of favorite cities and always be aware of
+            the weather.
           </p>
 
           <div className={s.divider} />
@@ -29,7 +30,8 @@ export function Hero({ onSearch }) {
           <div className={s.dateInfo}>
             <span className={s.dateMonth}>{dateData.monthYear}</span>
             <span className={s.dateDay}>
-              {dateData.dayOfWeek}, {dateData.dayNum}<sup>{dateData.suffix}</sup>
+              {dateData.dayOfWeek}, {dateData.dayNum}
+              <sup>{dateData.suffix}</sup>
             </span>
           </div>
         </div>
