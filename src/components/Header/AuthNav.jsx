@@ -1,7 +1,7 @@
 import s from './Header.module.css'
-export function AuthNav({handleToggle}) {
+export function AuthNav({handleToggle,isShown}) {
     return (
-      <div className={s.userData}>
+      <div className={isShown ? s.userDataMenu : s.userData}>
         <button className={s.btn} onClick={() => handleToggle('signUp')}>
           Sign Up
         </button>

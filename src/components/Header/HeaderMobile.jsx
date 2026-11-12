@@ -1,5 +1,7 @@
 import s from './Header.module.css'
-export function HeaderMobile({handleClose,userData,handleToggle,avatar}) {
+import { UserMenu } from './UserMenu';
+import { AuthNav } from './AuthNav';
+export function HeaderMobile({handleClose,userData,handleToggle,avatar,isShown}) {
     return (
       <div className={s.menuOverlay}>
         <div className={s.containerMenu}>
@@ -22,22 +24,9 @@ export function HeaderMobile({handleClose,userData,handleToggle,avatar}) {
               </li>
             </ul>
             {userData ? (
-              <div className={s.userDataMenu}>
-                <p className={s.userName}>{userData.userName}</p>
-                <img src={avatar} alt="avatar" />
-              </div>
+              <UserMenu avatar={avatar} userData={userData} isShown={isShown}/>
             ) : (
-              <div className={s.userDataMenu}>
-                <button
-                  className={s.btn}
-                  onClick={() => handleToggle('signUp')}
-                >
-                  Sign Up
-                </button>
-                <button className={s.btn} onClick={() => handleToggle('login')}>
-                  Sign In
-                </button>
-              </div>
+              <AuthNav handleToggle={handleToggle} isShown={isShown}/>
             )}
           </div>
         </div>
