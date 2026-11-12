@@ -1,6 +1,6 @@
 import s from './WeeklyForecast.module.css'
 import { formatForecastDate } from 'utils/date'
-import { weatherDescriptions,getWeatherIcon } from 'utils/weather'
+import { weatherDescriptions,getWeatherIcon } from "utils/weather"
 export function WeeklyForecast({data}) {
     const { temperature_2m_max, temperature_2m_min, time, weather_code } = data;
     const days = [0, 1, 2, 3, 4, 5, 6, 7];
