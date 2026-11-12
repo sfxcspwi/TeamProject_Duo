@@ -1,21 +1,20 @@
 import axios from 'axios';
 
+const API_URL = 'https://newsdata.io/api/1/latest';
+
 export const fetchNews = async () => {
   try {
-    const response = await axios.get(
-      'https://api.apilayer.net/serpstack/search',
-      {
-        params: {
-          access_key: 'f50414ba791ae9ca979f186a12db9840',
-          query: 'cat',
-        },
-      }
-    );
-    console.log(response.data);
+    const response = await axios.get(API_URL, {
+      params: {
+        apikey: 'pub_a0a5c5a2dca549a1993306cc1551a1a7',
+        qInTitle: 'big dog',
+        language: 'en',
+      },
+    });
     
-    return response.data;
+    return response.data.results || [];
   } catch (error) {
-    console.error(error.response?.data || error.message);
+    console.error('News API error:', error.response?.data || error.message);
     throw error;
   }
 };

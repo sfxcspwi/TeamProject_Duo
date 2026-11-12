@@ -9,16 +9,8 @@ import { NewsList } from './NewsList';
   useEffect(() => {
     const getNews = async () => {
       try {
-        const data = await fetchNews();
-        // const filteredNews = data.filter(
-        //   item => !item.image_url?.startsWith('https://menafn.com')
-        // );
-        // setNews(filteredNews);
-        console.log(data);
-        
-        setNews([data.related_searches]);
-
-        
+        const data = await fetchNews(); 
+        setNews(data);
       } catch (error) {
         console.error('Failed to fetch news:', error);
       }

@@ -50,7 +50,7 @@ export function Header({ handleToggle, userData }) {
         </div>
       </div>
       {isShown && (
-        <HeaderMobile handleClose={handleClose} userData={userData} handleToggle={handleToggle} avatar={avatar}/>
+        <HeaderMobile handleClose={handleClose} userData={userData} handleToggle={handleToggle} avatar={avatar} isShown={isShown} />
       )}
     </header>
   );
