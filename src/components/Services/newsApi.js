@@ -2,23 +2,20 @@ import axios from 'axios';
 
 export const fetchNews = async () => {
   try {
-    const response = await axios.get('https://newsdata.io/api/1/latest', {
-      params: {
-        apikey: "pub_a0a5c5a2dca549a1993306cc1551a1a7",
-        qInTitle: 'endangered species',
-        language: 'en',
-        size: 10,
-      },
-    });
-
-    return response.data.results || [];
+    const response = await axios.get(
+      'https://api.apilayer.net/serpstack/search',
+      {
+        params: {
+          access_key: 'f50414ba791ae9ca979f186a12db9840',
+          query: 'cat',
+        },
+      }
+    );
+    console.log(response.data);
+    
+    return response.data;
   } catch (error) {
-    if (error.response?.status === 429) {
-      console.error('API limit exceeded. Try again later.');
-    }
-
+    console.error(error.response?.data || error.message);
     throw error;
   }
 };
-
-
