@@ -264,11 +264,11 @@
 }
 
 @media (max-width: 767px) {
-   .card
-   {
-    width: 293px;
-    height: 392px;
-   }
+    .card {
+        width: 293px; 
+        max-width: 293px;
+        height: 392px;
+    } 
 
     .cityName
     {

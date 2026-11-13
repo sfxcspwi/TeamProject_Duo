@@ -32,18 +32,22 @@ html{
 
 
 .container {
-  max-width: 1140px; 
+  width: 100%; 
+  max-width: 1140px;
   padding-left: 16px;
   padding-right: 16px;
   margin: 0 auto;
 }
+
 
 .cardsList {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 74px;
   margin: 0 auto;
-  padding: 40px 16px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
   box-sizing: border-box;
 }
 
@@ -60,19 +64,20 @@ html{
 
 }
 
+
 @media (max-width: 767px) {
   .cardsList {
     grid-template-columns: 1fr;
     gap: 24px;
-    padding: 35px 0px;
+    justify-content: center;
+    padding-top: 35px;
+    padding-bottom: 35px;
   }
 
-  .container 
-  {
-    max-width: 293px; 
+  .container {
+    max-width: 293px;
   }
 }
-
 
 
 code {
