@@ -8,7 +8,7 @@ export function ForecastInfo({data }) {
     const { humidity, temp, visibility, feels_like, pressure, wind_speed } = data;
     return (
       <section className={s.section}>
-        <div className="container">
+        <div className={s.container}>
           <ul className={s.list}>
             <li className={s.item}>
               <p className={s.title}>Feels like</p>
